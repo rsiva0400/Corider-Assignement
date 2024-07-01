@@ -2,8 +2,10 @@ from pymongo import MongoClient
 import bcrypt
 import secrets
 
+import os
 
-MyClient = MongoClient("localhost",27017)
+mongo_uri = os.getenv('MONGO_URI', 'mongodb://localhost:27017/mydatabase')
+MyClient = MongoClient("mongodb://mongo:27017/dev")
 
 UserDB = MyClient.UserDataBase
 
@@ -35,16 +37,13 @@ def isEmailExist(email):
 
 def createUser(name, email, password):
     try:
-        # generate a unique User Id
         userId = secrets.token_hex(8)
 
-        # Hash the password before storing
         hashedPass = bcrypt.hashpw(password.encode('utf-8'), salt)
         result = UsersCol.insert_one({
             '_id': userId, 'name':name, 
             'password': hashedPass, 'email': email})
         
-        # returning the user id
         return result.inserted_id
     
     # Generate new user id if the generated Id already exists
