@@ -21,3 +21,23 @@ Open Command prompt and navigate to the working directory which has all the requ
 docker-compose build
 docker-compose up
 ```
+
+## Testing in Postman
+For testing in Postman API, use the same api url and change the JSON payload with respect to API endpoint.
+
+
+*JSON Payload for Fetch Note*
+```
+{
+    "email": "kitch1@gmail.com",
+    "password": "9876543210",
+    "name": "kishuu"
+}
+```
+*Output from Server*
+```
+{
+    "message": "User Id created successfully",
+    "userId": "39a6b4c059a37c91"
+}
+```
