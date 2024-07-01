@@ -11,3 +11,13 @@ pip install -r requirements.txt
 3. **/users** - *POST* To create a new user with given data
 4. **/users/<id>** - *PUT* To update users with the specified ID with new data.
 5. **/users/<id>** - *DELETE* To delete the User with specified ID.
+
+## API Endpoints
+To create and run docker image, make sure docker engire is up and running
+
+Open Command prompt and navigate to the working directory which has all the required files and excute the below commands.
+
+```docker
+docker-compose build
+docker-compose up
+```
