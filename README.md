@@ -7,9 +7,9 @@ pip install -r requirements.txt
 ```
 ## API Endpoints
 1. **/users** - *GET* To fetch all the user names and email ids.
-2. **/users/<id>** - *GET* To fetch specific user using unique User Id which is generate while user creation
+2. **/users/\<id\>** - *GET* To fetch specific user using unique User Id which is generate while user creation
 3. **/users** - *POST* To create a new user with given data
-4. /users/<id> - *PUT* To update users with the specified ID with new data.
+4. **/users/<id>** - *PUT* To update users with the specified ID with new data.
 5. **/users/<id>** - *DELETE* To delete the User with specified ID.
 
 ## API Endpoints
