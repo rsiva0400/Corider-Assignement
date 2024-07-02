@@ -5,7 +5,7 @@ import secrets
 import os
 
 mongo_uri = os.getenv('MONGO_URI', 'mongodb://localhost:27017/mydatabase')
-MyClient = MongoClient("mongodb://mongo:27017/dev")
+MyClient = MongoClient(mongo_uri)
 
 UserDB = MyClient.UserDataBase
 
@@ -15,12 +15,14 @@ salt = bcrypt.gensalt()
 
 
 def fetchAllUsers():
-    result = UsersCol.find({}, {'_id':0, 'name': 1, 'email': 1})
-    emailList, userList = [], []
+    result = UsersCol.find({})
+    userIds, emailList, userList = [], [], []
     for i in result:
         emailList.append(i['email'])
         userList.append(i['name'])
-    return {"names": userList, "emails": emailList}
+        userIds.append(i['_id'])
+    return {"names": userList, "emails": emailList, "userId": userIds}
+
 
 def fetchUserById(id):
     result = UsersCol.find_one({'_id':id}, {'_id':0, 'name': 1, 'email' : 1})

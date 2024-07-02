@@ -3,6 +3,7 @@ FROM python:3.11.1
 WORKDIR /app
 
 ADD databaseFuntions.py .
+ADD api_endpoints.py .
 ADD app.py .
 ADD requirements.txt .
 
