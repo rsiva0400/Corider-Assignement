@@ -1,4 +1,4 @@
-from pymongo import MongoClient
+from pymongo import MongoClient, errors
 import bcrypt
 import secrets
 
@@ -49,7 +49,7 @@ def createUser(name, email, password):
         return result.inserted_id
     
     # Generate new user id if the generated Id already exists
-    except:
+    except errors.DuplicateKeyError:
         createUser(name, email, password)
 
 def updateUser(id, field, newData):
